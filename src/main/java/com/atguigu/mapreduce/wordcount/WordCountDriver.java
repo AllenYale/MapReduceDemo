@@ -23,6 +23,8 @@ public class WordCountDriver {
         //1 获取job
 //        Configuration configuration = new Configuration();
 //        Job job = Job.getInstance();
+
+        //修改bug 把configuration作为参数传入 Job.getInstance(configuration)
         Configuration configuration = new Configuration();
         Job job = Job.getInstance(configuration);
 
