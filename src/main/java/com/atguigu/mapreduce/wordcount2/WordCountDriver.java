@@ -22,7 +22,7 @@ public class WordCountDriver {
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
         //1 获取job
         Configuration configuration = new Configuration();
-        Job job = Job.getInstance();
+        Job job = Job.getInstance(configuration);
 
         // 2 设置jar包路径
         job.setJarByClass(WordCountDriver.class);

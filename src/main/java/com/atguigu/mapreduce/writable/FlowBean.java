@@ -16,12 +16,11 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 /**
- * 具备系列化功能
+ * 具备序列化功能
  *
  */
 public class FlowBean implements Writable {
 
-    //上行流量、下行流量、总流量
     private long upFlow;
     private long downFlow;
     private long sumFlow;
@@ -50,12 +49,11 @@ public class FlowBean implements Writable {
         this.sumFlow = sumFlow;
     }
 
-    //不会调用上方setSumFlow(long sumFlow) ,sumFlow为上行流量+上行流量之和
     public void setSumFlow(){
-        this.sumFlow = upFlow + downFlow;
+        this.sumFlow = this.upFlow + this.downFlow;
     }
 
-    //空参构造
+    //重写空参构构造器
     public FlowBean() {
     }
 
@@ -68,7 +66,6 @@ public class FlowBean implements Writable {
 
     @Override
     public void readFields(DataInput in) throws IOException {
-        //顺序和write保持一致
         this.upFlow = in.readLong();
         this.downFlow = in.readLong();
         this.sumFlow = in.readLong();
@@ -76,6 +73,6 @@ public class FlowBean implements Writable {
 
     @Override
     public String toString() {
-        return upFlow + "\t" + downFlow + "\t" + sumFlow;
+        return upFlow + "\t" + downFlow + "\t" + sumFlow ;
     }
 }

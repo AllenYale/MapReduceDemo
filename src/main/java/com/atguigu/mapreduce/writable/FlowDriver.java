@@ -39,11 +39,11 @@ public class FlowDriver {
         job.setOutputValueClass(FlowBean.class);
 
         //6；设置数据的输入路径和输出路径
-        FileInputFormat.setInputPaths(job, new Path("F:\\test\\input\\phone_data.txt"));
-        FileOutputFormat.setOutputPath(job, new Path("F:\\test\\output_phone_data_output"));
+        FileInputFormat.setInputPaths(job, new Path("E:\\doc\\learning\\hadoop_learning\\test_code\\input\\phone_data.txt"));
+        FileOutputFormat.setOutputPath(job, new Path("E:\\doc\\learning\\hadoop_learning\\test_code\\output4"));
 
         //7：提交job
-        boolean result = job.waitForCompletion(true);
-        System.exit(result? 0:1);
+        boolean result = job.waitForCompletion(true);//Params:verbose – print the progress to the user
+        System.exit(result ? 0 : 1);
     }
 }

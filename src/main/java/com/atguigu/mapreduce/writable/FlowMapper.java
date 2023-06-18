@@ -25,6 +25,7 @@ public class FlowMapper extends Mapper<LongWritable, Text, Text, FlowBean> {
     protected void map(LongWritable key, Text value, Mapper<LongWritable, Text, Text, FlowBean>.Context context) throws IOException, InterruptedException {
         //1：获取一行
         //1 15267076088 192.168.100.1 www.atguigu.com 24681 299
+        //2	13846544121	192.196.100.2			264	0	200
         String line = value.toString();
 
         //2：切割
@@ -33,7 +34,7 @@ public class FlowMapper extends Mapper<LongWritable, Text, Text, FlowBean> {
         //抓取想要的数据
         //手机号、上下行流量
         String phone = split[1];
-        String up =  split[split.length - 3];
+        String up =  split[split.length - 3];   //字符串操作tips：先获取长度，从后往前数第几个是想要的元素
         String down = split[split.length - 2];
 
         //封装

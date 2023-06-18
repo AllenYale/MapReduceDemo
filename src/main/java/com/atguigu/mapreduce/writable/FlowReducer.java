@@ -16,7 +16,8 @@ import java.io.IOException;
 public class FlowReducer extends Reducer<Text, FlowBean, Text, FlowBean> {
     private FlowBean outV = new FlowBean();
 
-    //reduce方法，相同的key才调用一次
+    //经过map操作之后，Text key为手机号，values为相关手机号的不同Flowbean的集合
+    // reduce方法，相同的key才调用一次
     @Override
     protected void reduce(Text key, Iterable<FlowBean> values, Reducer<Text, FlowBean, Text, FlowBean>.Context context) throws IOException, InterruptedException {
         // 1: 遍历集合累加值
@@ -24,10 +25,12 @@ public class FlowReducer extends Reducer<Text, FlowBean, Text, FlowBean> {
         long totalDown = 0;
 
         for (FlowBean value : values) {
-            totalUp = value.getUpFlow();
-            totalDown = value.getDownFlow();
+            //遍历累加上行、下行流量
+            totalUp += value.getUpFlow();
+            totalDown += value.getDownFlow();
         }
 
+        //2 封装：outK outV。
         outV.setUpFlow(totalUp);
         outV.setDownFlow(totalDown);
         outV.setSumFlow();

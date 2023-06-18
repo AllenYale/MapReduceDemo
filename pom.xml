@@ -36,6 +36,7 @@
 
 
   <build>
+    <!--maven 打包插件，jar包放到linux上运行-->
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
