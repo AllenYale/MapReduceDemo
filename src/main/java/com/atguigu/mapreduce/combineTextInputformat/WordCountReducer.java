@@ -1,4 +1,4 @@
-package com.atguigu.mapreduce.wordcount;
+package com.atguigu.mapreduce.combineTextInputformat;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
@@ -40,10 +40,10 @@ public class WordCountReducer extends Reducer<Text, IntWritable, Text, IntWritab
         for (IntWritable value : values) {
             sum += value.get();
         }
-        //遍历结束后，sum=2
+
         outV.set(sum);
 
-        //写出，（atguigu,2）
+        //写出
         context.write(key, outV);
     }
 }
